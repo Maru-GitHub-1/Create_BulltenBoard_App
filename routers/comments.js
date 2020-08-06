@@ -4,6 +4,7 @@ const controller = require('../controllers/comments');
 
 router
   .route('/')
-  .get(controller.getComment);
+  .get(controller.getComment)
+  .post(controller.postComment)
 
 module.exports = router;
