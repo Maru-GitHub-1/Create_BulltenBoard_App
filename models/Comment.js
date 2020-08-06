@@ -22,3 +22,9 @@ for (let i = 0; i < 5; i++) {
 }
 
 // ここより上はプライベートな値
+
+module.exports = {
+  findAll: () => {
+    return comments.slice();
+  }
+}
