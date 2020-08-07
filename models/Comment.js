@@ -23,6 +23,7 @@ for (let i = 0; i < 5; i++) {
   comments.push(comment);
 }
 
+
 // ここより上はプライベートな値
 
 module.exports = {
@@ -61,11 +62,29 @@ module.exports = {
     if (!comment) {
       throw new Error('idに該当するコメントがありません');
     }
+
     comment.username = username;
     comment.body = body;
     comment.updatedAt = new Date();
 
     return comment;
   },
+  remove: (id) => {
+    if (typeof id === 'number' || id < 1) {
+      throw new Error('idは必須です(１以上の数字)')
+    }
+    const targetIndex = comments.findIndex(comment => id === comment.id);
 
+        // ドキュメントより
+    //   - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
+    //   - findIndex() メソッドは、配列内の要素が指定されたテスト関数を満たす場合、
+    //     配列内のインデックスを返します。そうでない場合は-1を返します。 
+    if (targetIndex === -1) {
+      throw new Error('該当するidが見つかりません');
+    }
+
+    const removeComment = comments.splice([0], 1);
+
+    return removeComment;
+  }
 }
