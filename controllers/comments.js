@@ -19,7 +19,7 @@ module.exports = {
   putComment: (req, res) => {
     const id = req.params.id;
     const {username, body} = req.body;
-    const parsedId = id.parseInt(id, 10);
+    const parsedId = parseInt(id, 10);
 
     try {
       const updateComment = Comment.update({
