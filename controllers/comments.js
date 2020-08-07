@@ -13,7 +13,7 @@ module.exports = {
 
       res.status(200).json(createComment);
     } catch  (error) {
-      res.status(400).json({message: error.message})
+      res.status(400).json({message: error.message});
     }
   },
   putComment: (req, res) => {
@@ -30,8 +30,18 @@ module.exports = {
 
       res.status(200).json(updateComment);    
     } catch (error) {
-      res.status(400).json({message: error.message})
+      res.status(400).json({message: error.message});
     }
   },
-  
-}
+  deleteComment: (req, res) => {
+    const id = req.params.id;
+    const parsedId = id.parseInt(id, 10);
+
+    try {
+      const deleteComment = Todo.remove(parsedId);
+      res.status(200).json(deleteComment);
+    } catch (error) {
+      res.status(400).json({message: error.message});
+    }
+  }
+};
