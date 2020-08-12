@@ -1,5 +1,3 @@
-const { use } = require("../routers/comments");
-
 const comments = [];
 let nextId = 1;
 
