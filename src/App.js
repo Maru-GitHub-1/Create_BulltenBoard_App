@@ -1,20 +1,31 @@
 import React from 'react';
-import Button from './Component/Button/Button';
 import CommentList from './Component/CommentList/CommentList'
+import Form from './Component/Form/Form'
 
-function App() {
-  const comments = [
-    'aaaaaa',
-    'bbbbbb',
-    'cccccc'
-  ];
+class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className="App">
-      <Button>送信する</Button>
-      <CommentList comments={comments}></CommentList>
-    </div>
-  );
-};
+    this.state = {
+      comments: ['初期コメント']
+    };
 
+    this.addComment = this.addComment.bind(this);
+  }
+
+  addComment(comment) {
+    this.setState({
+      comments: [...this.state.comments, comment]
+    });
+  }
+
+  render() {
+    return(
+      <div className="App">
+        <Form onSubmit={body => this.addComment(body)} />
+        <CommentList comments={this.state.comments}></CommentList>
+      </div>
+    )
+  };
+}
 export default App;
