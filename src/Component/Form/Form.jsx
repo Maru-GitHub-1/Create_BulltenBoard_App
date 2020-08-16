@@ -38,7 +38,7 @@ class Form extends React.Component {
   render() {
     return(
       <div>
-        <div>
+        <div className="Form-cotainer">
         <textarea name="body" cols="30" rows="5" 
                   value={this.state.body} onChange={this.handleChange}></textarea>
         </div>
