@@ -22,7 +22,7 @@ class App extends React.Component {
   render() {
     return(
       <div className="App">
-        <Form onSubmit={body => this.addComment(body)} />
+        <Form onSubmit={this.addComment} />
         <CommentList comments={this.state.comments}></CommentList>
       </div>
     )
