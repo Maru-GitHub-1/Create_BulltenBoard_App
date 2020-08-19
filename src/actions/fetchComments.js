@@ -1,4 +1,5 @@
 import axios from 'axios';
+import CommentModel from '../models/CommentModel'
 
 const API_URL = '/api/comments';
 
@@ -12,8 +13,8 @@ export const fetchComments = () => {
     try{
       const response = await axios.get(API_URL);
       const body = response.data.body;
-      const data = CommetnsModel.createCommentInstance(body);
-      dispatch( fetchCommentsSuccess(body) );
+      const data = CommentModel.createCommentInstance(body);
+      dispatch( fetchCommentsSuccess(data) );
     } catch (error) {
       dispatch( fetchCommentsFailure(error) )
     };
